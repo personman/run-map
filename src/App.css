@@ -1,0 +1,205 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.controls {
+  padding: 20px;
+  background-color: #f5f5f5;
+  z-index: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.controls h1 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #8b5cf6; /* Purple to match routes */
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #8b5cf6; /* Purple to match routes */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #7c3aed; /* Darker purple on hover */
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.info {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.animation-status {
+  margin-top: 15px;
+  background-color: #f0f7ff;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #d1e4ff;
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.activity-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.activity-title {
+  margin: 0;
+  font-size: 16px;
+  color: #8b5cf6; /* Purple to match routes */
+  line-height: 1.2;
+}
+
+.activity-date-time {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.activity-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.activity-distance {
+  font-size: 14px;
+  font-weight: bold;
+  color: #4b5563;
+  padding: 4px 8px;
+  background-color: #ede9fe; /* Light purple background */
+  border-radius: 4px;
+}
+
+.activity-duration {
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 12px;
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #8b5cf6; /* Purple to match routes */
+  transition: none; /* Remove transition for instant reset */
+}
+
+.progress-text {
+  margin-top: 5px;
+  font-size: 13px;
+  color: #4b5563;
+  text-align: right;
+}
+
+.map-container {
+  flex-grow: 1;
+  position: relative;
+  z-index: 0;
+}
+
+.file-uploader {
+  margin-top: 10px;
+}
+
+.animation-options {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.option-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+  margin-bottom: 8px;
+}
+
+.radio-options {
+  display: flex;
+  gap: 16px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.radio-label input[type="radio"] {
+  cursor: pointer;
+}
+
+.radio-label input[type="radio"]:disabled {
+  cursor: not-allowed;
+}
+
+.radio-label input[type="radio"]:disabled + span {
+  color: #9ca3af;
+}
+
+.info-text {
+  margin-top: 8px;
+  color: #666;
+  font-size: 12px;
+}
+
+.debug-info {
+  margin-top: 15px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.debug-info details {
+  font-size: 12px;
+}
+
+.debug-info summary {
+  cursor: pointer;
+  color: #666;
+}
+
+.debug-info pre {
+  margin-top: 8px;
+  background-color: #f0f0f0;
+  padding: 8px;
+  border-radius: 4px;
+  max-height: 150px;
+  overflow: auto;
+}
