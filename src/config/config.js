@@ -15,20 +15,26 @@ const config = {
   }
 };
 
-// In Vite/ES modules we need to use a different approach than require()
-// The solution is to directly import the local config at build time
+// In Vite/ES modules we use dynamic imports
+// We use a try/catch approach with import() to handle both development and production
 
-// Import directly for ES modules (Vite will handle this)
-import * as localConfigModule from './config.local.js';
+// Function to load local config
+const loadLocalConfig = async () => {
+  try {
+    // Dynamic import for local config
+    const localConfig = await import('./config.local.js');
+    if (localConfig.default) {
+      console.log('Using local config');
+      Object.assign(config, localConfig.default);
+    }
+  } catch (error) {
+    console.warn('Error loading local config:', error.message);
+    console.warn('Please create src/config/config.local.js based on config.local.sample.js');
+  }
+};
 
-// Apply local config if available
-if (localConfigModule && localConfigModule.default) {
-  console.log('Using local config');
-  Object.assign(config, localConfigModule.default);
-} else {
-  console.warn('No local config found or it has no default export.');
-  console.warn('Please create src/config/config.local.js based on config.local.sample.js');
-}
+// Load local config immediately (this is an async operation but config will be used after page load)
+loadLocalConfig();
 
 // Verify token is not default
 if (config.mapbox.accessToken === 'YOUR_MAPBOX_TOKEN_HERE') {
