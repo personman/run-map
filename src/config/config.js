@@ -15,16 +15,18 @@ const config = {
   }
 };
 
-// For production: would use dynamic import - using static for now
-try {
-  // Try to load local config (this file is not included in the git repo)
-  const localConfigModule = require('./config.local.js');
-  if (localConfigModule.default) {
-    console.log('Using local config');
-    Object.assign(config, localConfigModule.default);
-  }
-} catch (error) {
-  console.warn('No local config found. Using default config.');
+// In Vite/ES modules we need to use a different approach than require()
+// The solution is to directly import the local config at build time
+
+// Import directly for ES modules (Vite will handle this)
+import * as localConfigModule from './config.local.js';
+
+// Apply local config if available
+if (localConfigModule && localConfigModule.default) {
+  console.log('Using local config');
+  Object.assign(config, localConfigModule.default);
+} else {
+  console.warn('No local config found or it has no default export.');
   console.warn('Please create src/config/config.local.js based on config.local.sample.js');
 }
 
