@@ -1,8 +1,8 @@
 // Default configuration - will be overridden by local config
 const config = {
   mapbox: {
-    // Use the token directly here since we're having issues with dynamic imports
-    accessToken: 'pk.eyJ1IjoicGVyc29ubWFuMiIsImEiOiJjbTl2bGk1N2Ewa2czMnBwbXdnNG50aWJ6In0.MaAiXGLd2ll5_aJi4Ln_5A',
+    // This should be replaced with your actual token in config.local.js
+    accessToken: 'YOUR_MAPBOX_TOKEN_HERE',
     style: 'mapbox://styles/mapbox/outdoors-v12',
     defaultCenter: [-74.5, 40],
     defaultZoom: 2
@@ -15,8 +15,22 @@ const config = {
   }
 };
 
-// Note: Dynamic config loading would typically be done with import(), but
-// we've hardcoded the token for now to simplify things
-console.log('Using default config with embedded token')
+// For production: would use dynamic import - using static for now
+try {
+  // Try to load local config (this file is not included in the git repo)
+  const localConfigModule = require('./config.local.js');
+  if (localConfigModule.default) {
+    console.log('Using local config');
+    Object.assign(config, localConfigModule.default);
+  }
+} catch (error) {
+  console.warn('No local config found. Using default config.');
+  console.warn('Please create src/config/config.local.js based on config.local.sample.js');
+}
+
+// Verify token is not default
+if (config.mapbox.accessToken === 'YOUR_MAPBOX_TOKEN_HERE') {
+  console.error('⚠️ No Mapbox token configured! Please set your token in config.local.js');
+}
 
 export default config;

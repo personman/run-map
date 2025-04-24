@@ -23,7 +23,12 @@ npm install
 3. Configure your Mapbox token:
    - Sign up for an account at [Mapbox](https://account.mapbox.com/)
    - Create a token with the appropriate permissions
-   - Edit `src/config/config.js` and replace the accessToken value with your actual token
+   - Copy the sample config to create your local config:
+     ```
+     cp src/config/config.local.sample.js src/config/config.local.js
+     ```
+   - Edit `src/config/config.local.js` and replace `YOUR_MAPBOX_TOKEN_HERE` with your actual token
+   - IMPORTANT: Never commit your config.local.js file as it contains your private token
 
 4. Configure animation options (optional):
    - In `src/config/config.js`, you can customize animation settings:
