@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
-import config from '../config/config';
-
-// Set Mapbox token from config
-mapboxgl.accessToken = config.mapbox.accessToken;
+import config, { isConfigReady } from '../config/config';
 
 const FixedAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimationUpdate, useProportionalSpeed }) => {
   const mapContainerRef = useRef(null);
@@ -13,19 +10,76 @@ const FixedAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimat
   const activityIndexRef = useRef(0);
   const phaseRef = useRef('idle');
   const [mapReady, setMapReady] = useState(false);
+  const [configLoaded, setConfigLoaded] = useState(false);
 
-  // Initialize map
+  // Check if config is loaded properly (specifically the Mapbox token)
   useEffect(() => {
-    if (!mapContainerRef.current) return;
+    const checkConfig = async () => {
+      try {
+        // Wait for the config to be ready
+        const ready = await isConfigReady();
+        
+        if (ready) {
+          console.log('Mapbox token loaded properly:', config.mapbox.accessToken.slice(0, 5) + '...');
+          console.log('Config center coordinates:', config.mapbox.defaultCenter);
+          
+          // Make sure we have valid center coordinates
+          if (!Array.isArray(config.mapbox.defaultCenter) || 
+              config.mapbox.defaultCenter.length !== 2 ||
+              isNaN(config.mapbox.defaultCenter[0]) ||
+              isNaN(config.mapbox.defaultCenter[1])) {
+            console.warn('Invalid center coordinates, setting default coordinates');
+            config.mapbox.defaultCenter = [-74.0060, 40.7128]; // NYC coordinates
+          }
+          
+          setConfigLoaded(true);
+        } else {
+          // Retry after a short delay
+          console.warn('Mapbox token not loaded yet, retrying...');
+          setTimeout(checkConfig, 300);
+        }
+      } catch (error) {
+        console.error('Error checking config:', error);
+        setTimeout(checkConfig, 300);
+      }
+    };
+    
+    console.log('Starting config check...');
+    checkConfig();
+  }, []);
 
-    console.log('Initializing map');
+  // Initialize map only after config is loaded
+  useEffect(() => {
+    if (!mapContainerRef.current || !configLoaded) return;
+    
+    // Set Mapbox token from config
+    mapboxgl.accessToken = config.mapbox.accessToken;
+
+    console.log('Initializing map with center:', config.mapbox.defaultCenter);
     
     try {
+      // Use fallbacks for map initialization
+      // Ensure valid center coordinates
+      const defaultCenter = Array.isArray(config.mapbox.defaultCenter) && 
+                           config.mapbox.defaultCenter.length === 2 && 
+                           !isNaN(config.mapbox.defaultCenter[0]) && 
+                           !isNaN(config.mapbox.defaultCenter[1]) 
+                         ? config.mapbox.defaultCenter 
+                         : [-74.0060, 40.7128]; // NYC coordinates as fallback
+                         
+      // Ensure valid map style
+      const mapStyle = typeof config.mapbox.style === 'string' && config.mapbox.style.trim() !== ''
+                      ? config.mapbox.style
+                      : 'mapbox://styles/mapbox/outdoors-v12'; // Default outdoors style
+      
+      console.log('Using center coordinates:', defaultCenter);
+      console.log('Using map style:', mapStyle);
+      
       mapRef.current = new mapboxgl.Map({
         container: mapContainerRef.current,
-        style: config.mapbox.style,
-        center: config.mapbox.defaultCenter,
-        zoom: config.mapbox.defaultZoom,
+        style: mapStyle,
+        center: defaultCenter,
+        zoom: config.mapbox.defaultZoom || 9,
         interactive: true,
         attributionControl: true,
         preserveDrawingBuffer: true
@@ -166,7 +220,7 @@ const FixedAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimat
         mapRef.current.remove();
       }
     };
-  }, []);
+  }, [configLoaded]);
 
   // Handle activities changes
   useEffect(() => {
