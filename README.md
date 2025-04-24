@@ -1,10 +1,10 @@
-# Strava Run Maps Animation
+# Activity Maps Animation
 
-This app animates your Strava activities on a map. Upload your GPX files from Strava, and watch as the app shows each activity with a smooth animation.
+This app animates your GPS activities on a map. Upload your GPX files from your activity tracker, and watch as the app shows each activity with a smooth animation.
 
 ## Features
 
-- Uploads multiple GPX files exported from Strava
+- Uploads multiple GPX files exported from activity trackers
 - Animates each activity one by one in chronological order
 - Shows a smooth transition between activities
 - Creates a trail effect as each run progresses
@@ -48,11 +48,10 @@ npm run dev
 
 ## How to Use
 
-1. Export your GPX files from Strava:
-   - Go to your activity on Strava
-   - Click the "..." button
-   - Select "Export GPX"
-   - Save the file
+1. Export your GPX files from your activity tracker app:
+   - Most running and cycling apps allow GPX exports
+   - Save the files to your device
+   - Some devices can generate GPX files directly
 
 2. Upload your GPX files using the "Upload GPX Files" button
 
@@ -74,13 +73,12 @@ The build output will be in the `dist` directory, which you can deploy to any st
 - Mapbox GL JS
 - gpxparser
 
-## Future Strava API Integration
+## Future API Integration
 
-For future development, here are plans to integrate directly with Strava's API:
+For future development, here are plans to integrate directly with activity tracking APIs:
 
 ### Authentication
-- Implement OAuth 2.0 flow with Strava
-- Register app in Strava developer portal
+- Implement OAuth 2.0 flow
 - Store user tokens securely
 
 ### Data Filtering Options
@@ -90,9 +88,12 @@ For future development, here are plans to integrate directly with Strava's API:
 - **Performance Filters**: Distance, elevation, pace ranges
 - **Keyword Search**: Activity title and description filters
 
+### Social Features
+- Share animated routes with others
+- Public/private visibility controls
+- Embed animated routes in other websites
+
 ### Technical Implementation
 - Create serverless functions to handle API requests
 - Implement token refresh mechanism
-- Fetch GPX data directly from Strava
-
-See [Strava API Documentation](https://developers.strava.com/) for more details.
+- Fetch GPX data directly from activity providers

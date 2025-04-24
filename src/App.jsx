@@ -39,7 +39,7 @@ function App() {
   return (
     <div className="app">
       <div className="controls">
-        <h1>Strava Run Maps</h1>
+        <h1>Activity Maps</h1>
         <FileUploader onFilesUploaded={handleFilesUploaded} />
         <div className="buttons">
           <button 

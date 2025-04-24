@@ -185,7 +185,7 @@ const FileUploader = ({ onFilesUploaded }) => {
       <button onClick={() => fileInputRef.current.click()}>
         Upload GPX Files
       </button>
-      <p className="info-text">Select multiple .gpx files from your Strava activities</p>
+      <p className="info-text">Select multiple .gpx files from your running activities</p>
     </div>
   );
 };

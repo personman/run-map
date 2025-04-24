@@ -56,7 +56,7 @@ const MapAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimatio
               'line-cap': 'round'
             },
             paint: {
-              'line-color': '#fc5200', // Strava orange
+              'line-color': '#8b5cf6', // Purple
               'line-width': 6,
               'line-opacity': 0.9
             }
@@ -97,7 +97,7 @@ const MapAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimatio
             source: 'current-point',
             paint: {
               'circle-radius': 12,
-              'circle-color': '#fc5200',
+              'circle-color': '#8b5cf6',
               'circle-opacity': 0.4,
               'circle-blur': 1
             }
@@ -109,7 +109,7 @@ const MapAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimatio
             source: 'current-point',
             paint: {
               'circle-radius': 8,
-              'circle-color': '#fc5200',
+              'circle-color': '#8b5cf6',
               'circle-stroke-width': 3,
               'circle-stroke-color': '#ffffff'
             }
@@ -457,7 +457,7 @@ const MapAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimatio
             'line-cap': 'round'
           },
           paint: {
-            'line-color': '#fc5200', // Strava orange
+            'line-color': '#8b5cf6', // Purple
             'line-width': 6,
             'line-opacity': 0.9
           }
@@ -478,7 +478,7 @@ const MapAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimatio
             source: 'current-point',
             paint: {
               'circle-radius': 12,
-              'circle-color': '#fc5200',
+              'circle-color': '#8b5cf6',
               'circle-opacity': 0.4,
               'circle-blur': 1
             }
@@ -492,7 +492,7 @@ const MapAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimatio
           source: 'current-point',
           paint: {
             'circle-radius': 8,
-            'circle-color': '#fc5200',
+            'circle-color': '#8b5cf6',
             'circle-stroke-width': 3,
             'circle-stroke-color': '#ffffff'
           }

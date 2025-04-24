@@ -1,5 +1,5 @@
 {
-  "name": "strava-run-maps",
+  "name": "activity-maps",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
