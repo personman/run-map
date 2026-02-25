@@ -203,3 +203,84 @@ button:disabled {
   max-height: 150px;
   overflow: auto;
 }
+/* ---- Group state ---- */
+.group-loading, .group-error, .group-name {
+  margin: 4px 0 8px;
+  font-size: 14px;
+}
+.group-error { color: #c0392b; }
+.group-name  { color: #555; }
+
+/* ---- Save Group Modal ---- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 28px 32px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+
+.modal h2 {
+  margin: 0 0 12px;
+  color: #8b5cf6;
+}
+
+.modal p {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: #444;
+}
+
+.modal-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.modal-error {
+  color: #c0392b;
+  font-size: 13px;
+  margin: 0 0 10px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.button-secondary {
+  background: #e5e7eb;
+  color: #333;
+}
+
+.button-secondary:hover {
+  background: #d1d5db;
+}
+
+.saved-url-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.saved-url-row .modal-input {
+  flex: 1;
+  margin-bottom: 0;
+}

@@ -68,9 +68,30 @@ const loadLocalConfig = async () => {
       configLoadedResolve(false);
     }
   } catch (error) {
-    console.warn('Error loading local config:', error.message);
-    console.warn('Please create src/config/config.local.js based on config.local.sample.js');
-    console.error('⚠️ No Mapbox token configured! Please set your token in config.local.js');
+    console.warn('No local config found, trying remote config...');
+    await loadRemoteConfig();
+  }
+};
+
+// Fetch config from PHP backend (production fallback)
+const loadRemoteConfig = async () => {
+  try {
+    const response = await fetch('/api/config_endpoint.php');
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const remoteConfig = await response.json();
+    if (remoteConfig.mapbox && remoteConfig.mapbox.accessToken) {
+      Object.assign(config, {
+        ...config,
+        mapbox: { ...config.mapbox, ...remoteConfig.mapbox },
+      });
+      console.log('Using remote config');
+      configLoadedResolve(true);
+    } else {
+      console.error('⚠️ Remote config missing Mapbox token');
+      configLoadedResolve(false);
+    }
+  } catch (err) {
+    console.error('⚠️ Failed to load remote config:', err.message);
     configLoadedResolve(false);
   }
 };

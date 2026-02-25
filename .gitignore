@@ -35,3 +35,4 @@ Thumbs.db
 .env.test.local
 .env.production.local
 src/config/config.local.js
+api/config.php

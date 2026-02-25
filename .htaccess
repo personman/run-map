@@ -1,0 +1,22 @@
+Options -Indexes
+RewriteEngine On
+
+# Serve real files and directories directly (assets, api/*.php, etc.)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# SPA fallback: /group/abc123 and any other client-side routes → index.html
+RewriteRule ^ index.html [L]
+
+# Block direct web access to config.php
+<Files "config.php">
+  Order allow,deny
+  Deny from all
+</Files>
+
+# Block direct web access to SQL files
+<Files "*.sql">
+  Order allow,deny
+  Deny from all
+</Files>
