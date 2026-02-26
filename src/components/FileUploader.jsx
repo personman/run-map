@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { parseGpxText } from '../utils/gpxParser.js';
+import { logImport } from '../services/api.js';
 
 const FileUploader = ({ onFilesUploaded }) => {
   const fileInputRef = useRef(null);
@@ -23,6 +24,10 @@ const FileUploader = ({ onFilesUploaded }) => {
     }
 
     activities.sort((a, b) => new Date(a.time) - new Date(b.time));
+    if (activities.length > 0) {
+      const totalMiles = activities.reduce((s, a) => s + parseFloat(a.distance || 0), 0);
+      logImport('gpx', activities.length, totalMiles);
+    }
     onFilesUploaded(activities);
   };
 
@@ -48,7 +53,6 @@ const FileUploader = ({ onFilesUploaded }) => {
       <button onClick={() => fileInputRef.current.click()}>
         Upload GPX Files
       </button>
-      <p className="info-text">Select multiple .gpx files from your running activities</p>
     </div>
   );
 };

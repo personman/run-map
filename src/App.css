@@ -2,31 +2,50 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  height: 100dvh;
   width: 100vw;
+  background-color: #0e1c2e;
 }
 
 .controls {
-  padding: 20px;
-  background-color: #f5f5f5;
+  padding: 12px 16px;
+  background-color: #0e1c2e;
   z-index: 1;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
 }
 
 .controls h1 {
-  margin-top: 0;
-  margin-bottom: 16px;
-  color: #8b5cf6; /* Purple to match routes */
+  margin: 0;
+  color: #ddeef8;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  line-height: 1;
 }
 
 .buttons {
   display: flex;
   gap: 10px;
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 button {
-  padding: 8px 16px;
-  background-color: #8b5cf6; /* Purple to match routes */
+  padding: 6px 14px;
+  background-color: #0ea5e9;
   color: white;
   border: none;
   border-radius: 4px;
@@ -36,32 +55,34 @@ button {
 }
 
 button:hover {
-  background-color: #7c3aed; /* Darker purple on hover */
+  background-color: #38bdf8;
 }
 
 button:disabled {
-  background-color: #ccc;
+  background-color: #0c2236;
+  color: #3a5570;
   cursor: not-allowed;
 }
 
 .info {
-  margin-top: 12px;
+  margin-top: 8px;
   font-size: 14px;
+  color: #6a9ab5;
 }
 
 .animation-status {
-  margin-top: 15px;
-  background-color: #f0f7ff;
-  padding: 12px;
+  margin-top: 8px;
+  background-color: #0a1e30;
+  padding: 8px 10px;
   border-radius: 8px;
-  border: 1px solid #d1e4ff;
+  border: 1px solid #0f2f4a;
 }
 
 .activity-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .activity-info {
@@ -73,13 +94,13 @@ button:disabled {
 .activity-title {
   margin: 0;
   font-size: 16px;
-  color: #8b5cf6; /* Purple to match routes */
+  color: #ddeef8;
   line-height: 1.2;
 }
 
 .activity-date-time {
   font-size: 13px;
-  color: #64748b;
+  color: #6a9ab5;
 }
 
 .activity-details {
@@ -92,21 +113,21 @@ button:disabled {
 .activity-distance {
   font-size: 14px;
   font-weight: bold;
-  color: #4b5563;
+  color: #ddeef8;
   padding: 4px 8px;
-  background-color: #ede9fe; /* Light purple background */
+  background-color: #082f49;
   border-radius: 4px;
 }
 
 .activity-duration {
   font-size: 13px;
-  color: #4b5563;
+  color: #6a9ab5;
 }
 
 .progress-bar-container {
   width: 100%;
   height: 12px;
-  background-color: #e0e0e0;
+  background-color: #0c2236;
   border-radius: 6px;
   overflow: hidden;
   position: relative;
@@ -114,21 +135,51 @@ button:disabled {
 
 .progress-bar {
   height: 100%;
-  background-color: #8b5cf6; /* Purple to match routes */
-  transition: none; /* Remove transition for instant reset */
+  background-color: #0ea5e9;
+  transition: none;
 }
 
 .progress-text {
   margin-top: 5px;
   font-size: 13px;
-  color: #4b5563;
+  color: #6a9ab5;
   text-align: right;
 }
 
-.map-container {
+.map-wrapper {
   flex-grow: 1;
   position: relative;
   z-index: 0;
+}
+
+.map-container {
+  position: absolute;
+  inset: 0;
+}
+
+.animation-overlay {
+  position: absolute;
+  bottom: 24px;
+  left: 16px;
+  width: 340px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.animation-overlay .animation-status {
+  margin-top: 0;
+}
+
+.upload-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.upload-row .file-uploader,
+.upload-row .strava-connect {
+  margin-top: 0;
 }
 
 .file-uploader {
@@ -136,15 +187,21 @@ button:disabled {
 }
 
 .animation-options {
-  margin-top: 16px;
-  padding-top: 12px;
-  border-top: 1px solid #e5e7eb;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #0f2f4a;
+}
+
+.speed-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .option-title {
   font-size: 14px;
   font-weight: 500;
-  color: #4b5563;
+  color: #6a9ab5;
   margin-bottom: 8px;
 }
 
@@ -159,11 +216,12 @@ button:disabled {
   gap: 6px;
   cursor: pointer;
   font-size: 14px;
-  color: #4b5563;
+  color: #a0c8e0;
 }
 
 .radio-label input[type="radio"] {
   cursor: pointer;
+  accent-color: #0ea5e9;
 }
 
 .radio-label input[type="radio"]:disabled {
@@ -171,18 +229,18 @@ button:disabled {
 }
 
 .radio-label input[type="radio"]:disabled + span {
-  color: #9ca3af;
+  color: #3a5570;
 }
 
 .info-text {
   margin-top: 8px;
-  color: #666;
+  color: #3a5570;
   font-size: 12px;
 }
 
 .debug-info {
   margin-top: 15px;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #0f2f4a;
   padding-top: 10px;
 }
 
@@ -192,30 +250,32 @@ button:disabled {
 
 .debug-info summary {
   cursor: pointer;
-  color: #666;
+  color: #3a5570;
 }
 
 .debug-info pre {
   margin-top: 8px;
-  background-color: #f0f0f0;
+  background-color: #0a1e30;
+  color: #6a9ab5;
   padding: 8px;
   border-radius: 4px;
   max-height: 150px;
   overflow: auto;
 }
+
 /* ---- Group state ---- */
 .group-loading, .group-error, .group-name {
   margin: 4px 0 8px;
   font-size: 14px;
 }
-.group-error { color: #c0392b; }
-.group-name  { color: #555; }
+.group-error { color: #e05252; }
+.group-name  { color: #6a9ab5; }
 
 /* ---- Save Group Modal ---- */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.65);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -223,23 +283,24 @@ button:disabled {
 }
 
 .modal {
-  background: #fff;
+  background: #0e1c2e;
+  border: 1px solid #0f2f4a;
   border-radius: 8px;
   padding: 28px 32px;
   width: 100%;
   max-width: 440px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
 }
 
 .modal h2 {
   margin: 0 0 12px;
-  color: #8b5cf6;
+  color: #ddeef8;
 }
 
 .modal p {
   margin: 0 0 14px;
   font-size: 14px;
-  color: #444;
+  color: #6a9ab5;
 }
 
 .modal-input {
@@ -247,13 +308,20 @@ button:disabled {
   box-sizing: border-box;
   padding: 8px 10px;
   font-size: 14px;
-  border: 1px solid #ccc;
+  background: #0a1e30;
+  color: #ddeef8;
+  border: 1px solid #0f2f4a;
   border-radius: 4px;
   margin-bottom: 10px;
 }
 
+.modal-input:focus {
+  outline: none;
+  border-color: #0ea5e9;
+}
+
 .modal-error {
-  color: #c0392b;
+  color: #e05252;
   font-size: 13px;
   margin: 0 0 10px;
 }
@@ -265,12 +333,22 @@ button:disabled {
 }
 
 .button-secondary {
-  background: #e5e7eb;
-  color: #333;
+  background: #0c2236;
+  color: #a0c8e0;
 }
 
 .button-secondary:hover {
-  background: #d1d5db;
+  background: #0f2f4a;
+}
+
+.modal-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #9ab8cc;
+  margin-bottom: 14px;
+  cursor: pointer;
 }
 
 .saved-url-row {
@@ -283,4 +361,126 @@ button:disabled {
 .saved-url-row .modal-input {
   flex: 1;
   margin-bottom: 0;
+}
+
+/* ---- Strava Connect ---- */
+.strava-connect {
+  margin-top: 10px;
+}
+
+.strava-connect-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #fc4c02;
+  color: #fff;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.strava-connect-btn:hover {
+  background-color: #e04300;
+}
+
+.strava-spinner {
+  font-size: 14px;
+  color: #6a9ab5;
+}
+
+.strava-error {
+  color: #e05252;
+  font-size: 13px;
+  margin: 0 0 8px;
+}
+
+.strava-picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.strava-picker-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #a0c8e0;
+}
+
+.strava-select-all {
+  font-size: 12px;
+  padding: 4px 8px;
+  background: #0c2236;
+  color: #a0c8e0;
+  font-weight: normal;
+}
+
+.strava-select-all:hover {
+  background: #0f2f4a;
+}
+
+.strava-activity-list {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1px solid #0f2f4a;
+  border-radius: 4px;
+}
+
+.strava-activity-row {
+  border-bottom: 1px solid #0f2f4a;
+}
+
+.strava-activity-row:last-child {
+  border-bottom: none;
+}
+
+.strava-activity-row label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.strava-activity-row label:hover {
+  background: #0a1e30;
+}
+
+.strava-activity-name {
+  flex: 1;
+  color: #ddeef8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.strava-activity-meta {
+  color: #6a9ab5;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.strava-load-more {
+  display: block;
+  width: 100%;
+  background: #0c2236;
+  color: #a0c8e0;
+  font-weight: normal;
+  font-size: 13px;
+  padding: 6px;
+  margin-bottom: 8px;
+}
+
+.strava-load-more:hover {
+  background: #0f2f4a;
+}
+
+.strava-import-btn {
+  display: block;
+  width: 100%;
 }

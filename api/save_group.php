@@ -36,6 +36,7 @@ if (!is_array($activities) || count($activities) === 0) {
 }
 
 $activitiesJson = json_encode($activities);
+$publicList = empty($body['public_list']) ? 0 : 1;
 
 // Generate 12-char hex ID
 $id = bin2hex(random_bytes(6));
@@ -43,14 +44,14 @@ $id = bin2hex(random_bytes(6));
 try {
     $db = get_db();
     $stmt = $db->prepare(
-        'INSERT INTO activity_groups (id, name, activities) VALUES (?, ?, ?)'
+        'INSERT INTO activity_groups (id, name, activities, public_list) VALUES (?, ?, ?, ?)'
     );
-    $stmt->execute([$id, $name, $activitiesJson]);
+    $stmt->execute([$id, $name, $activitiesJson, $publicList]);
 } catch (Exception $e) {
     json_response(['error' => 'Database error'], 500);
 }
 
 json_response([
     'id'  => $id,
-    'url' => '/group/' . $id,
+    'url' => '/map/' . $id,
 ]);

@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { saveGroup } from '../services/api.js';
 
 function SaveGroupModal({ activities, onClose }) {
   const [name, setName] = useState('');
+  const [publicList, setPublicList] = useState(false);
   const [saving, setSaving] = useState(false);
   const [savedUrl, setSavedUrl] = useState(null);
   const [error, setError] = useState(null);
+  const [copied, setCopied] = useState(false);
+  const urlInputRef = useRef(null);
 
   const handleSave = async () => {
     const trimmed = name.trim();
@@ -13,7 +16,7 @@ function SaveGroupModal({ activities, onClose }) {
     setSaving(true);
     setError(null);
     try {
-      const { url } = await saveGroup(trimmed, activities);
+      const { url } = await saveGroup(trimmed, activities, publicList);
       setSavedUrl(window.location.origin + url);
     } catch (err) {
       setError(err.message);
@@ -22,14 +25,24 @@ function SaveGroupModal({ activities, onClose }) {
     }
   };
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(savedUrl).catch(() => {});
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(savedUrl);
+    } catch {
+      // Fallback for non-HTTPS or permission denied
+      if (urlInputRef.current) {
+        urlInputRef.current.select();
+        document.execCommand('copy');
+      }
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <h2>Save Group</h2>
+        <h2>Save Map</h2>
 
         {!savedUrl ? (
           <>
@@ -44,6 +57,14 @@ function SaveGroupModal({ activities, onClose }) {
               maxLength={255}
               autoFocus
             />
+            <label className="modal-checkbox-label">
+              <input
+                type="checkbox"
+                checked={publicList}
+                onChange={(e) => setPublicList(e.target.checked)}
+              />
+              Include in public list
+            </label>
             {error && <p className="modal-error">{error}</p>}
             <div className="modal-buttons">
               <button onClick={handleSave} disabled={saving || !name.trim()}>
@@ -54,16 +75,17 @@ function SaveGroupModal({ activities, onClose }) {
           </>
         ) : (
           <>
-            <p>Your group has been saved. Share this link:</p>
+            <p>Your map has been saved. Share this link:</p>
             <div className="saved-url-row">
               <input
+                ref={urlInputRef}
                 type="text"
                 className="modal-input"
                 readOnly
                 value={savedUrl}
                 onClick={(e) => e.target.select()}
               />
-              <button onClick={handleCopy}>Copy</button>
+              <button onClick={handleCopy}>{copied ? 'Copied!' : 'Copy'}</button>
             </div>
             <div className="modal-buttons">
               <button onClick={onClose}>Done</button>

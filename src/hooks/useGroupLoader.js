@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getGroup } from '../services/api.js';
 
-const GROUP_PATH_RE = /^\/group\/([a-f0-9]{12})$/;
+const GROUP_PATH_RE = /^\/map\/([a-f0-9]{12})$/;
 
 export function useGroupLoader(onActivitiesLoaded) {
   const [groupId, setGroupId] = useState(null);
