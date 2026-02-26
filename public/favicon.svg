@@ -1,6 +1,83 @@
-<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="200" height="200" rx="100" fill="#0ea5e9"/>
-  <path d="M50 143 Q78 71 100 100 Q122 129 150 57" stroke="white" stroke-width="10.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <circle cx="50" cy="143" r="12" fill="white" opacity="0.4"/>
-  <circle cx="150" cy="57" r="18" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <clipPath id="clip">
+      <circle cx="256" cy="256" r="252"/>
+    </clipPath>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="50%">
+      <stop offset="40%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="#020810" stop-opacity="0.9"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <circle cx="256" cy="256" r="252" fill="#0b1929"/>
+
+  <!-- Map grid -->
+  <g clip-path="url(#clip)" stroke="#1b3d5c" stroke-width="1" opacity="0.5">
+    <line x1="4"   y1="128" x2="508" y2="128"/>
+    <line x1="4"   y1="192" x2="508" y2="192"/>
+    <line x1="4"   y1="256" x2="508" y2="256"/>
+    <line x1="4"   y1="320" x2="508" y2="320"/>
+    <line x1="4"   y1="384" x2="508" y2="384"/>
+    <line x1="128" y1="4"   x2="128" y2="508"/>
+    <line x1="192" y1="4"   x2="192" y2="508"/>
+    <line x1="256" y1="4"   x2="256" y2="508"/>
+    <line x1="320" y1="4"   x2="320" y2="508"/>
+    <line x1="384" y1="4"   x2="384" y2="508"/>
+  </g>
+
+  <!-- Vignette -->
+  <circle cx="256" cy="256" r="252" fill="url(#vignette)"/>
+
+  <!-- Heart route — glow pass -->
+  <path
+    d="M 256 432
+       L 298 402  L 360 372  L 376 352
+       L 376 225  L 358 208  L 358 178
+       L 290 178  L 290 205  L 232 205  L 232 178
+       L 148 178  L 148 215  L 132 232  L 132 265
+       L 148 282  L 148 358  L 172 378  L 215 405
+       L 256 432 Z"
+    fill="none"
+    stroke="#3a9fd4"
+    stroke-width="20"
+    stroke-linejoin="round"
+    stroke-linecap="round"
+    clip-path="url(#clip)"
+    filter="url(#glow)"
+    opacity="0.6"/>
+
+  <!-- Heart route — bright core -->
+  <path
+    d="M 256 432
+       L 298 402  L 360 372  L 376 352
+       L 376 225  L 358 208  L 358 178
+       L 290 178  L 290 205  L 232 205  L 232 178
+       L 148 178  L 148 215  L 132 232  L 132 265
+       L 148 282  L 148 358  L 172 378  L 215 405
+       L 256 432 Z"
+    fill="none"
+    stroke="#c8e8f8"
+    stroke-width="5"
+    stroke-linejoin="round"
+    stroke-linecap="round"
+    clip-path="url(#clip)"/>
+
+  <!-- Location dot — glow -->
+  <circle cx="256" cy="432" r="13" fill="none" stroke="#3a9fd4" stroke-width="5"
+    clip-path="url(#clip)" filter="url(#glow)" opacity="0.8"/>
+  <!-- Location dot — core -->
+  <circle cx="256" cy="432" r="9"  fill="none" stroke="#c8e8f8" stroke-width="3" clip-path="url(#clip)"/>
+  <circle cx="256" cy="432" r="3"  fill="#c8e8f8" clip-path="url(#clip)"/>
+
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="249" fill="none" stroke="#1a3d60" stroke-width="5"/>
 </svg>
