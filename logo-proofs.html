@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>run-map · Logo Concepts</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    background: #f1f5f9;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 56px 32px 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .header { text-align: center; margin-bottom: 52px; }
+  .header h1 {
+    font-size: 22px; font-weight: 800; color: #0f172a;
+    letter-spacing: -0.03em; margin: 0 0 5px;
+  }
+  .header p {
+    font-size: 11px; color: #94a3b8;
+    letter-spacing: 0.14em; text-transform: uppercase; margin: 0;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 160px);
+    gap: 40px 32px;
+  }
+  .cell { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .cell svg {
+    width: 160px; height: 160px; border-radius: 26px; display: block;
+    box-shadow: 0 4px 18px rgba(0,0,0,.16), 0 1px 4px rgba(0,0,0,.08);
+  }
+  .meta { text-align: center; }
+  .num  { display: block; font-size: 10px; font-weight: 700; color: #cbd5e1;
+          letter-spacing: 0.1em; margin-bottom: 2px; }
+  .name { display: block; font-size: 13px; font-weight: 600; color: #1e293b;
+          margin-bottom: 2px; }
+  .hex  { font-size: 11px; color: #94a3b8;
+          font-family: 'SFMono-Regular', 'Consolas', monospace; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>run-map</h1>
+  <p>Logo Concepts</p>
+</div>
+
+<div class="grid">
+
+  <!-- 01 · Purple · Side Shoe -->
+  <div class="cell">
+    <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+      <rect width="160" height="160" fill="#7c3aed"/>
+      <!-- heel pull tab -->
+      <rect x="13" y="34" width="13" height="32" rx="5" fill="white"/>
+      <!-- full shoe body -->
+      <path d="M 30 60
+               C 28 48 37 38 52 36 L 70 36
+               C 80 36 87 46 84 57
+               C 81 68 75 79 72 86
+               L 132 80
+               C 143 84 150 95 148 109
+               C 146 122 138 132 122 134
+               L 38 134
+               C 24 134 14 124 14 110
+               L 14 84
+               C 14 68 20 61 30 60 Z"
+            fill="white"/>
+      <!-- ankle collar cutout -->
+      <path d="M 70 36
+               C 80 36 87 46 84 57
+               C 81 68 75 79 68 84
+               C 56 79 46 68 44 57
+               C 42 46 50 36 70 36 Z"
+            fill="#7c3aed"/>
+      <!-- midfoot stripe -->
+      <path d="M 73 88 C 96 81 122 79 138 82 L 140 92
+               C 122 89 95 92 70 100 Z"
+            fill="#a78bfa"/>
+      <!-- sole line -->
+      <path d="M 17 112 C 85 107 140 109 146 113"
+            stroke="#a78bfa" stroke-width="4" fill="none" stroke-linecap="round"/>
+    </svg>
+    <div class="meta">
+      <span class="num">01</span>
+      <span class="name">Side Shoe</span>
+      <span class="hex">#7c3aed</span>
+    </div>
+  </div>
+
+  <!-- 02 · Teal · Map Pin -->
+  <div class="cell">
+    <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+      <rect width="160" height="160" fill="#0f766e"/>
+      <!-- teardrop pin -->
+      <path d="M 80 16
+               C 50 16 20 44 20 72
+               C 20 100 40 122 62 138
+               C 68 143 75 148 80 150
+               C 85 148 92 143 98 138
+               C 120 122 140 100 140 72
+               C 140 44 110 16 80 16 Z"
+            fill="white"/>
+      <!-- inner hole -->
+      <circle cx="80" cy="70" r="28" fill="#0f766e"/>
+      <!-- centre dot -->
+      <circle cx="80" cy="70" r="9" fill="white"/>
+    </svg>
+    <div class="meta">
+      <span class="num">02</span>
+      <span class="name">Map Pin</span>
+      <span class="hex">#0f766e</span>
+    </div>
+  </div>
+
+  <!-- 03 · Navy · Lettermark -->
+  <div class="cell">
+    <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+      <rect width="160" height="160" fill="#1e3a8a"/>
+      <text x="80" y="105"
+            font-family="-apple-system,'Helvetica Neue',Arial,sans-serif"
+            font-size="64" font-weight="900" fill="white" text-anchor="middle">RM</text>
+      <!-- underline accent -->
+      <rect x="36" y="116" width="88" height="6" rx="3" fill="#60a5fa" opacity="0.6"/>
+    </svg>
+    <div class="meta">
+      <span class="num">03</span>
+      <span class="name">Lettermark</span>
+      <span class="hex">#1e3a8a</span>
+    </div>
+  </div>
+
+  <!-- 04 · Burnt Orange · Shoe + Route Trail -->
+  <div class="cell">
+    <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+      <rect width="160" height="160" fill="#c2410c"/>
+      <!-- dotted trail coming from the left -->
+      <path d="M 13 94 C 28 86 36 100 52 93"
+            stroke="white" stroke-width="5" stroke-dasharray="7,5"
+            fill="none" stroke-linecap="round" opacity="0.75"/>
+      <circle cx="13" cy="94" r="5" fill="white" opacity="0.75"/>
+      <!-- shoe (same geometry, shifted right) -->
+      <path d="M 42 68
+               C 40 57 49 48 62 46 L 78 46
+               C 87 46 93 56 90 66
+               C 87 76 81 86 78 92
+               L 134 86
+               C 144 90 150 100 148 113
+               C 146 124 139 133 124 135
+               L 46 135
+               C 33 135 23 125 23 112
+               L 23 88
+               C 23 73 30 68 42 68 Z"
+            fill="white"/>
+      <!-- collar cutout -->
+      <path d="M 78 46
+               C 87 46 93 56 90 66
+               C 87 76 81 86 74 91
+               C 63 86 53 75 52 65
+               C 50 54 58 46 78 46 Z"
+            fill="#c2410c"/>
+      <!-- stripe -->
+      <path d="M 79 93 C 100 86 124 84 139 87 L 141 97
+               C 124 95 99 98 76 104 Z"
+            fill="#fb923c"/>
+    </svg>
+    <div class="meta">
+      <span class="num">04</span>
+      <span class="name">Shoe + Route</span>
+      <span class="hex">#c2410c</span>
+    </div>
+  </div>
+
+  <!-- 05 · Forest · GPS Route -->
+  <div class="cell">
+    <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+      <rect width="160" height="160" fill="#166534"/>
+      <!-- route path -->
+      <path d="M 36 128 L 36 40 L 92 40 L 92 82 L 130 82"
+            stroke="white" stroke-width="11" fill="none"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- start dot -->
+      <circle cx="36" cy="128" r="10" fill="white"/>
+      <!-- end pin -->
+      <circle cx="130" cy="82" r="15" fill="white"/>
+      <line x1="130" y1="97" x2="130" y2="116"
+            stroke="white" stroke-width="9" stroke-linecap="round"/>
+    </svg>
+    <div class="meta">
+      <span class="num">05</span>
+      <span class="name">GPS Route</span>
+      <span class="hex">#166534</span>
+    </div>
+  </div>
+
+  <!-- 06 · Charcoal · Motion Arc -->
+  <div class="cell">
+    <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+      <rect width="160" height="160" fill="#374151"/>
+      <!-- swoosh arc -->
+      <path d="M 20 132 C 44 126 112 54 148 18"
+            stroke="white" stroke-width="17" fill="none" stroke-linecap="round"/>
+      <!-- destination dot (top-right) -->
+      <circle cx="148" cy="18" r="13" fill="white"/>
+      <!-- origin dot (bottom-left, faded) -->
+      <circle cx="20" cy="132" r="7" fill="white" opacity="0.4"/>
+    </svg>
+    <div class="meta">
+      <span class="num">06</span>
+      <span class="name">Motion Arc</span>
+      <span class="hex">#374151</span>
+    </div>
+  </div>
+
+  <!-- 07 · Crimson · Runner in Pin -->
+  <div class="cell">
+    <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+      <rect width="160" height="160" fill="#be123c"/>
+      <!-- pin shape (white) -->
+      <path d="M 80 14
+               C 46 14 16 44 16 76
+               C 16 108 40 130 63 144
+               C 69 148 75 152 80 154
+               C 85 152 91 148 97 144
+               C 120 130 144 108 144 76
+               C 144 44 114 14 80 14 Z"
+            fill="white"/>
+      <!-- stick runner in crimson -->
+      <!-- head -->
+      <circle cx="86" cy="50" r="9" fill="#be123c"/>
+      <!-- torso lean -->
+      <line x1="84" y1="59" x2="78" y2="80"
+            stroke="#be123c" stroke-width="6" stroke-linecap="round"/>
+      <!-- arm back -->
+      <line x1="82" y1="66" x2="66" y2="58"
+            stroke="#be123c" stroke-width="5" stroke-linecap="round"/>
+      <!-- arm forward -->
+      <line x1="82" y1="68" x2="96" y2="76"
+            stroke="#be123c" stroke-width="5" stroke-linecap="round"/>
+      <!-- leg forward (raised) -->
+      <line x1="78" y1="80" x2="92" y2="95"
+            stroke="#be123c" stroke-width="6" stroke-linecap="round"/>
+      <line x1="92" y1="95" x2="108" y2="91"
+            stroke="#be123c" stroke-width="5" stroke-linecap="round"/>
+      <!-- leg back -->
+      <line x1="78" y1="80" x2="64" y2="97"
+            stroke="#be123c" stroke-width="6" stroke-linecap="round"/>
+      <line x1="64" y1="97" x2="55" y2="110"
+            stroke="#be123c" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+    <div class="meta">
+      <span class="num">07</span>
+      <span class="name">Runner in Pin</span>
+      <span class="hex">#be123c</span>
+    </div>
+  </div>
+
+  <!-- 08 · Amber · Running Track -->
+  <div class="cell">
+    <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+      <rect width="160" height="160" fill="#b45309"/>
+      <!-- outer stadium oval -->
+      <path d="M 52 16 L 108 16
+               Q 150 16 150 58 L 150 102
+               Q 150 144 108 144 L 52 144
+               Q 10 144 10 102 L 10 58
+               Q 10 16 52 16 Z"
+            fill="white"/>
+      <!-- infield (cutout) -->
+      <path d="M 60 44 L 100 44
+               Q 122 44 122 66 L 122 94
+               Q 122 116 100 116 L 60 116
+               Q 38 116 38 94 L 38 66
+               Q 38 44 60 44 Z"
+            fill="#b45309"/>
+      <!-- inner lane line -->
+      <path d="M 56 30 L 104 30
+               Q 136 30 136 58 L 136 102
+               Q 136 130 104 130 L 56 130
+               Q 24 130 24 102 L 24 58
+               Q 24 30 56 30 Z"
+            fill="none" stroke="#b45309" stroke-width="3.5" opacity="0.35"/>
+      <!-- start/finish line -->
+      <line x1="80" y1="16" x2="80" y2="44"
+            stroke="#b45309" stroke-width="3" opacity="0.55"/>
+    </svg>
+    <div class="meta">
+      <span class="num">08</span>
+      <span class="name">Running Track</span>
+      <span class="hex">#b45309</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

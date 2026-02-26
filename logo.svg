@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="90" fill="#8b5cf6"/>
+
+  <!-- Full shoe silhouette (upper + sole as one shape) -->
+  <path d="
+    M 88 235
+    C 86 214, 94 198, 112 190
+    L 150 186
+    C 168 186, 182 198, 183 216
+    C 184 234, 175 254, 168 270
+    L 418 296
+    C 442 305, 460 328, 461 355
+    C 462 378, 450 402, 428 410
+    L 106 410
+    C 82 410, 63 397, 62 376
+    C 61 355, 73 340, 82 332
+    L 82 280
+    C 82 256, 84 244, 88 235
+    Z
+  " fill="white"/>
+
+  <!-- Ankle collar cutout (purple) -->
+  <path d="
+    M 150 186
+    C 166 186, 182 198, 183 216
+    C 184 234, 175 254, 168 270
+    C 152 260, 140 243, 138 224
+    C 136 206, 140 192, 150 186
+    Z
+  " fill="#8b5cf6"/>
+
+  <!-- Midfoot accent stripe -->
+  <path d="
+    M 170 272
+    C 228 256, 322 252, 412 269
+    L 432 278
+    L 430 292
+    L 410 283
+    C 320 267, 226 271, 166 288
+    Z
+  " fill="#c4b5fd"/>
+
+  <!-- Sole separation line -->
+  <path d="M 66 374 C 220 366, 360 366, 450 370"
+        stroke="#c4b5fd" stroke-width="5" fill="none"
+        stroke-linecap="round" opacity="0.8"/>
+
+  <!-- Heel pull tab (sticks up from the back of the heel) -->
+  <rect x="74" y="188" width="20" height="54" rx="8" fill="white"/>
+</svg>

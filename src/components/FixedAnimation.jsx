@@ -134,7 +134,7 @@ const FixedAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimat
               'line-cap': 'round'
             },
             paint: {
-              'line-color': '#8b5cf6', // Purple throughout
+              'line-color': '#4AABDC',
               'line-width': [
                 'case',
                 ['==', ['get', 'finalView'], true], 5, // Slightly thicker for final view
@@ -142,7 +142,7 @@ const FixedAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimat
               ],
               'line-opacity': [
                 'case',
-                ['==', ['get', 'finalView'], true], 0.9, // Full strength for final view
+                ['==', ['get', 'finalView'], true], 0.55,
                 0.4 // Faded during animation
               ]
             }
@@ -158,7 +158,7 @@ const FixedAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimat
               'line-cap': 'round'
             },
             paint: {
-              'line-color': '#c4b5fd', // Light purple
+              'line-color': '#91D4EE',
               'line-width': 12,
               'line-opacity': 0.3,
               'line-blur': 3
@@ -175,7 +175,7 @@ const FixedAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimat
               'line-cap': 'round'
             },
             paint: {
-              'line-color': '#8b5cf6', // Bright purple
+              'line-color': '#4AABDC',
               'line-width': 6,
               'line-opacity': 0.9
             }
@@ -187,7 +187,7 @@ const FixedAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimat
             source: 'current-point',
             paint: {
               'circle-radius': 12,
-              'circle-color': '#8b5cf6', // Purple
+              'circle-color': '#4AABDC',
               'circle-opacity': 0.4,
               'circle-blur': 1
             }
@@ -199,7 +199,7 @@ const FixedAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimat
             source: 'current-point',
             paint: {
               'circle-radius': 8,
-              'circle-color': '#8b5cf6', // Purple
+              'circle-color': '#4AABDC',
               'circle-stroke-width': 3,
               'circle-stroke-color': '#ffffff'
             }
@@ -250,17 +250,18 @@ const FixedAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimat
 
   const fitMapToActivities = () => {
     if (!mapRef.current || activities.length === 0) return;
-    
+
     try {
       const bounds = new mapboxgl.LngLatBounds();
-      
+
       activities.forEach(activity => {
         bounds.extend([activity.bounds.sw[0], activity.bounds.sw[1]]);
         bounds.extend([activity.bounds.ne[0], activity.bounds.ne[1]]);
       });
-      
+
+      mapRef.current.resize();
       mapRef.current.fitBounds(bounds, {
-        padding: 50,
+        padding: { top: 60, bottom: 80, left: 60, right: 60 },
         duration: 0
       });
       
@@ -685,8 +686,9 @@ const FixedAnimation = ({ activities, isAnimating, onAnimationComplete, onAnimat
             bounds.extend([a.bounds.ne[0], a.bounds.ne[1]]);
           });
           
+          mapRef.current.resize();
           mapRef.current.fitBounds(bounds, {
-            padding: config.animation.padding,
+            padding: { top: 60, bottom: 80, left: 60, right: 60 },
             duration: config.animation.zoomDuration
           });
           
