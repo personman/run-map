@@ -120,7 +120,10 @@ function App() {
             {!isGroupUrl && (
               <button onClick={() => setShowSaveModal(true)}>Save Map</button>
             )}
-            <button className="button-secondary" onClick={() => { setActivities([]); setCurrentActivity(null); setAnimationProgress(0); }}>Start Over</button>
+            <button className="button-secondary" onClick={() => {
+              if (isGroupUrl) { window.location.href = '/'; return; }
+              setActivities([]); setCurrentActivity(null); setAnimationProgress(0);
+            }}>Start Over</button>
           </div>
         )}
 
