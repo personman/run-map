@@ -90,7 +90,7 @@ function App() {
     <div className="app">
       <div className="controls">
         <div className="brand-header">
-          <img src="/favicon.svg" alt="" className="brand-icon" />
+          <img src="/favicon.png" alt="" className="brand-icon" />
           <h1>MileTracer</h1>
         </div>
 
