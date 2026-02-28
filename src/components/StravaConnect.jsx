@@ -27,6 +27,14 @@ export default function StravaConnect({ onActivitiesImported }) {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
 
+    if (params.has('strava_error')) {
+      const msg = params.get('strava_error');
+      window.history.replaceState({}, '', window.location.pathname);
+      setError(msg);
+      setPhase('idle');
+      return;
+    }
+
     if (params.has('strava_connected')) {
       // Just finished OAuth — clean URL and load activities
       window.history.replaceState({}, '', window.location.pathname);
